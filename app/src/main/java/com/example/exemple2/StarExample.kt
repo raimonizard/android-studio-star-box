@@ -47,7 +47,12 @@ fun Star(modifier: Modifier = Modifier) {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
      */
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-        val (boxRed, boxYellow, boxGreen, boxCyan, boxMagenta) = createRefs()
+        //val (boxRed, boxYellow, boxGreen, boxCyan, boxMagenta) = createRefs()
+        val boxRed = createRef()
+        val boxYellow = createRef()
+        val boxGreen = createRef()
+        val boxCyan = createRef()
+        val boxMagenta = createRef()
 
         Box(modifier = Modifier
             .size(120.dp)
@@ -66,7 +71,7 @@ fun Star(modifier: Modifier = Modifier) {
             .size(120.dp)
             .background(Color.Yellow)
             .constrainAs(boxYellow) {
-                start.linkTo(boxRed.start) // Changed to top
+                start.linkTo(boxRed.start)
                 bottom.linkTo(boxRed.top)
             })
 
@@ -83,7 +88,7 @@ fun Star(modifier: Modifier = Modifier) {
             .background(Color.Cyan)
             .constrainAs(boxCyan) {
                 top.linkTo(boxRed.top)
-                end.linkTo(boxRed.start) // Changed to start
+                end.linkTo(boxRed.start)
             })
 
         Box(modifier = Modifier
